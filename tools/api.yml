@@ -1,0 +1,12 @@
+package: api
+generate:
+  models: true
+  client: true
+
+output-options:
+  skip-prune: true
+  name-normalizer: ToCamelCase
+  initialism-overrides: true
+  disable-type-aliases-for-type:
+    - array
+output: ../internal/api/nobitex-http-api.go
