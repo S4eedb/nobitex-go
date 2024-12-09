@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 
@@ -24,5 +25,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("resp.StatusCode: %v\n", resp.StatusCode)
+	defer resp.Body.Close()
+
+	// Decode and pretty print the JSON response
+	var jsonResponse map[string]interface{}
+	if err := json.NewDecoder(resp.Body).Decode(&jsonResponse); err != nil {
+		log.Fatalf("Error decoding JSON response: %v", err)
+	}
+
+	prettyJSON, err := json.MarshalIndent(jsonResponse, "", "  ")
+	if err != nil {
+		log.Fatalf("Error marshalling JSON to pretty format: %v", err)
+	}
+
+	fmt.Println(string(prettyJSON))
 }
