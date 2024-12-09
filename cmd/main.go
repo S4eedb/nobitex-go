@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	basicAuth, err := securityprovider.NewSecurityProviderBasicAuth("my_user", "my_pass")
+	basicAuth, err := securityprovider.NewSecurityProviderBearerToken("my_token")
 	if err != nil {
 		log.Fatal(err)
 	}
