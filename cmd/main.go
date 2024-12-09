@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/S4eedb/nobitex-go/internal/api"
+	"github.com/S4eedb/nobitex-go/sdk"
 	"github.com/oapi-codegen/oapi-codegen/v2/pkg/securityprovider"
 )
 
@@ -16,7 +16,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	client, err := api.NewClient("https://api.nobitex.ir/", api.WithRequestEditorFn(basicAuth.Intercept))
+	client, err := sdk.NewClient("https://api.nobitex.ir/", sdk.WithRequestEditorFn(basicAuth.Intercept))
 	if err != nil {
 		log.Fatal(err)
 	}

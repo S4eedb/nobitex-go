@@ -1,4 +1,4 @@
-package: api
+package: sdk
 generate:
   models: true
   client: true
@@ -9,4 +9,4 @@ output-options:
   initialism-overrides: true
   disable-type-aliases-for-type:
     - array
-output: ../internal/api/nobitex-http-api.go
+output: ../sdk/nobitex-http-api.go
